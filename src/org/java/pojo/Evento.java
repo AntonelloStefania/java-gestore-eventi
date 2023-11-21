@@ -87,10 +87,8 @@ public class Evento {
 	
 	@Override
 	public String toString() {
-		return "titolo evento: " + getTitolo()+ "\n"
-			+ "data evento: " +dataFormattata() + "\n"
-			+ "posti totali: " + getPostiTotali() + "\n"
-			+ "posti prenotati: " + getPostiPrenotati();
+		return "\nevento: " +dataFormattata() +"-"+ getTitolo()+ "\n"
+			+ "posti totali: " + getPostiTotali() ;
 	}
 
 
