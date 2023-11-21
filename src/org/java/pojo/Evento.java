@@ -60,7 +60,7 @@ public class Evento {
 		this.postiPrenotati = postiPrenotati;
 	}
 	
-	private String dataFormattata() {
+	public String dataFormattata() {
 		  DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
           return data.format(formatter);
 	}

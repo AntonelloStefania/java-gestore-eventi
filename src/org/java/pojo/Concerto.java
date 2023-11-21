@@ -18,7 +18,10 @@ public class Concerto extends Evento{
 		return price;
 	}
 
-	public void setPrice(BigDecimal price) {
+	public void setPrice(BigDecimal price) throws Exception {
+		if(price.compareTo(BigDecimal.ZERO) < 0 ) {
+			throw new Exception("il prezzo non può essere negativo");
+		}
 		this.price = price;
 	}
 
