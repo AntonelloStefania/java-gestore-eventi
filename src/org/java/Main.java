@@ -1,16 +1,20 @@
 package org.java;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
+import org.java.pojo.Concerto;
 import org.java.pojo.Evento;
 
 public class Main {
-	public static void main(String[] args)  {
+	public static void main(String[] args) throws Exception  {
 		int intPrenotazioni =0;
 		int intDisdette = 0;
-		
+		double price =0;
+		LocalTime hourTime = null;
+		Evento event = null;
 		Scanner in = new Scanner(System.in);
 		
 	
@@ -46,8 +50,29 @@ public class Main {
 				intDisdette = Integer.valueOf(strDisdette);
 			}
 			
+			System.out.println("questo evento e' un concerto? y/n ");
+			String concerto = in.nextLine();
+			
+			if(concerto.equals("y")) {
+				System.out.println("a che ora è il concerto? hh:mm ");
+				String strHour = in.nextLine();
+				int hour = Integer.valueOf(strHour.split(":")[0]);
+				int min = Integer.valueOf(strHour.split(":")[1]);
+				
+				 hourTime = LocalTime.of(hour, min);
+				
+				System.out.println("prezzo del biglietto? ");
+				String strPrice = in.nextLine();
+				 price = Double.valueOf(strPrice);
+			}
+			
 				try {
-					Evento event = new Evento(title,dateEvent, intPosti );
+					switch(concerto) {
+					case "y": event = new Concerto(title, dateEvent, intPosti, price, hourTime); break;
+					case "n": event = new Evento(title,dateEvent, intPosti ); break;
+					}
+					
+				    
 					System.out.println(event);
 					System.out.println("\n-------------------------------\n");
 					
@@ -67,6 +92,7 @@ public class Main {
 					System.err.println("Errore: " + e.getMessage());
 			}
 				
+//				event = new Concerto("concerto", LocalDate.parse("2024-12-12"), 400, 40.25, LocalTime.of(14, 45));
 				
 			
 	}
