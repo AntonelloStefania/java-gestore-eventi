@@ -1,5 +1,6 @@
 package org.java;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -12,7 +13,7 @@ public class Main {
 	public static void main(String[] args) throws Exception  {
 		int intPrenotazioni =0;
 		int intDisdette = 0;
-		double price =0;
+		BigDecimal price = null;
 		LocalTime hourTime = null;
 		Evento event = null;
 		Scanner in = new Scanner(System.in);
@@ -50,20 +51,20 @@ public class Main {
 				intDisdette = Integer.valueOf(strDisdette);
 			}
 			
-			System.out.println("questo evento e' un concerto? y/n ");
+			System.out.print("questo evento e' un concerto? y/n ");
 			String concerto = in.nextLine();
 			
 			if(concerto.equals("y")) {
-				System.out.println("a che ora è il concerto? hh:mm ");
+				System.out.print("a che ora è il concerto? hh:mm ");
 				String strHour = in.nextLine();
 				int hour = Integer.valueOf(strHour.split(":")[0]);
 				int min = Integer.valueOf(strHour.split(":")[1]);
 				
 				 hourTime = LocalTime.of(hour, min);
 				
-				System.out.println("prezzo del biglietto? ");
+				System.out.print("prezzo del biglietto? ");
 				String strPrice = in.nextLine();
-				 price = Double.valueOf(strPrice);
+				 price = new BigDecimal(strPrice);
 			}
 			
 				try {
@@ -92,7 +93,6 @@ public class Main {
 					System.err.println("Errore: " + e.getMessage());
 			}
 				
-//				event = new Concerto("concerto", LocalDate.parse("2024-12-12"), 400, 40.25, LocalTime.of(14, 45));
 				
 			
 	}
